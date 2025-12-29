@@ -70,7 +70,7 @@ export default function GuideHero() {
           {/* Red Headline */}
           <div className="flex-1">
             <h2 className="text-xl md:text-2xl font-semibold text-[#c61b26] mb-2">
-              로욜라도서관은 서강대학교의 미래입니다.
+              로욜라도서관은 대학교의 미래입니다.
             </h2>
             <p className="text-xl font-medium text-slate-700">
               꿈을 키우고 만들어가는 공간, 로욜라도서관
