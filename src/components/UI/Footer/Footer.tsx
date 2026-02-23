@@ -3,13 +3,9 @@
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const [isFamilySiteOpen, setIsFamilySiteOpen] = useState(false);
-  const pathname = usePathname();
-  const isNsc = pathname?.startsWith("/suwon") || pathname?.startsWith("/nsc");
-  const campus = isNsc ? "nsc" : "hsc";
 
   const familySites = [
     { name: "교사자료 (기록보존실)", url: "https://archives.skku.edu/" },
@@ -23,26 +19,27 @@ export default function Footer() {
   ];
 
   return (
-    <div className="bg-white hidden xl:block">
-      <div className="flex justify-center items-center gap-8 border border-[#EEEEEE] pb-2 pt-3">
+    <footer className="bg-white border-t border-[#E5E2DC]">
+      {/* Top Links */}
+      <div className="flex justify-center items-center gap-8 py-3 border-b border-[#E5E2DC]">
         <a
-          href={`https://lib.skku.edu/${campus}/bulletins/notice/services`}
+          href="https://lib.skku.edu/hsc/bulletins/notice/services"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#8188A1] text-xs font-bold hover:text-[#2D2F3E] cursor-pointer"
+          className="text-[#6B7280] text-xs font-medium hover:text-[#1F222D] transition-colors hidden sm:block"
         >
           주요전화번호
         </a>
-        <div className="w-[1px] h-4 bg-[#CDD2E0]" />
+        <div className="w-px h-4 bg-[#E5E2DC] hidden sm:block" />
         <a
           href="https://www.skku.edu/skku/etc/private.do"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#8188A1] text-xs font-bold hover:text-[#2D2F3E] cursor-pointer"
+          className="text-[#6B7280] text-xs font-medium hover:text-[#1F222D] transition-colors"
         >
           개인정보처리방침
         </a>
-        <div className="w-[1px] h-4 bg-[#CDD2E0]" />
+        <div className="w-px h-4 bg-[#E5E2DC]" />
         <a
           href="https://www.skku.edu/skku/etc/pop_email.do"
           onClick={(e) => {
@@ -53,66 +50,84 @@ export default function Footer() {
               "width=600,height=500,scrollbars=yes,resizable=yes,left=100,top=100"
             );
           }}
-          className="text-[#8188A1] text-xs font-bold hover:text-[#2D2F3E] cursor-pointer"
+          className="text-[#6B7280] text-xs font-medium hover:text-[#1F222D] transition-colors"
         >
           이메일무단수집거부
         </a>
       </div>
-      <div className="flex justify-between items-center py-3 gap-10 max-w-[1200px] mx-auto px-20">
-        <div className="flex items-center gap-4">
-          <Image
-            src="/svgs/footer-logo.svg"
-            alt="footer-logo"
-            width={90}
-            height={90}
-          />
-          <div>
-            <p className="text-[#454F6F] text-sm">
-              (03063) 서울시 종로구 성균관로 25-2 성균관대학교 중앙학술정보관
-            </p>
-            <p className="text-[#454F6F] text-sm">
-              (16419) 경기도 수원시 장안구 서부로 2066 성균관대학교
-              삼성학술정보관
-            </p>
-            <p className="text-[#B1B7CC] text-xs mt-1">
-              COPYRIGHT © 2025 SKKU LIBRARY. ALL RIGHTS RESERVED.
-            </p>
+
+      {/* Bottom Content */}
+      <div className="max-w-[1200px] mx-auto px-6 py-5">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Logo + Address */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Image
+              src="/svgs/footer-logo.svg"
+              alt="성균관대학교"
+              width={72}
+              height={72}
+              className="shrink-0"
+            />
+            <div className="text-center sm:text-left">
+              <p className="text-[#6B7280] text-xs leading-relaxed">
+                (03063) 서울시 종로구 성균관로 25-2 성균관대학교 중앙학술정보관
+              </p>
+              <p className="text-[#6B7280] text-xs leading-relaxed">
+                (16419) 경기도 수원시 장안구 서부로 2066 성균관대학교
+                삼성학술정보관
+              </p>
+              <p className="text-[#c4c0b8] text-[10px] mt-1">
+                COPYRIGHT &copy; 2025 SKKU LIBRARY. ALL RIGHTS RESERVED.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-4 relative">
-          <Image src="/svgs/fb-logo.svg" alt="fb-logo" width={48} height={48} />
-          <div className="relative">
-            <button
-              className="flex items-center gap-2 border border-[#CDD2E0] rounded-full px-5 py-3 text-[#8188A1] hover:bg-gray-50"
-              onClick={() => setIsFamilySiteOpen(!isFamilySiteOpen)}
+
+          {/* Social + Family Site */}
+          <div className="flex items-center gap-3 relative">
+            <a
+              href="https://www.facebook.com/saboralib"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Family Site
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${
-                  isFamilySiteOpen ? "rotate-180" : ""
-                }`}
+              <Image
+                src="/svgs/fb-logo.svg"
+                alt="Facebook"
+                width={40}
+                height={40}
               />
-            </button>
-            {isFamilySiteOpen && (
-              <div className="absolute bottom-full right-0 mb-2 bg-white border border-[#CDD2E0] rounded-lg shadow-lg min-w-[200px] z-50">
-                {familySites.map((site, index) => (
-                  <a
-                    key={index}
-                    href={site.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-sm text-[#454F6F] hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg"
-                  >
-                    {site.name}
-                  </a>
-                ))}
-              </div>
-            )}
+            </a>
+            <div className="relative">
+              <button
+                className="flex items-center gap-2 border border-[#E5E2DC] rounded-full px-4 py-2 text-xs text-[#6B7280] hover:bg-[#F8F6F2] transition-colors cursor-pointer"
+                onClick={() => setIsFamilySiteOpen(!isFamilySiteOpen)}
+              >
+                Family Site
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform ${
+                    isFamilySiteOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {isFamilySiteOpen && (
+                <div className="absolute bottom-full right-0 mb-2 bg-white border border-[#E5E2DC] rounded-lg shadow-lg min-w-[200px] z-50">
+                  {familySites.map((site, index) => (
+                    <a
+                      key={index}
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-xs text-[#6B7280] hover:text-[#1B3A5C] hover:bg-[#F8F6F2] first:rounded-t-lg last:rounded-b-lg transition-colors"
+                    >
+                      {site.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
-

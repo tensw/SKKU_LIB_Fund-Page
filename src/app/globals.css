@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+:root {
+  --color-primary: #1B3A5C;
+  --color-secondary: #00563F;
+  --color-accent: #C8102E;
+  --color-bg: #F8F6F2;
+  --color-surface: #FFFFFF;
+  --color-text: #1F222D;
+  --color-muted: #6B7280;
+  --color-border: #E5E2DC;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -10,10 +21,67 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   overscroll-behavior-y: contain;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
+/* Section Navigation Active Indicator */
+.section-nav-item {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.section-nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.section-nav-item.active::after {
+  width: 100%;
+}
+
+/* Counter Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c0b8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a49c;
+}
