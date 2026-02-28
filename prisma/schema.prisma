@@ -15,5 +15,29 @@ model Donation {
   donatedAt DateTime
   purpose   String
   note      String?
+  source    String   @default("excel")
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([name, donatedAt, purpose])
+  @@index([donatedAt])
+  @@index([purpose])
+  @@index([source])
+}
+
+model StagingDonation {
+  id           Int      @id @default(autoincrement())
+  batchId      String
+  name         String
+  donorType    String
+  amount       BigInt
+  donatedAt    DateTime
+  purpose      String
+  note         String?
+  status       String   @default("pending")
+  conflictInfo String?
+  existingId   Int?
+  createdAt    DateTime @default(now())
+
+  @@index([batchId])
 }

@@ -167,14 +167,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    await prisma.donation.createMany({
-      data: validDonations,
-    });
-
-    return NextResponse.json({
-      success: true,
-      count: validDonations.length,
-    });
+    // Legacy: redirect to analyze flow
+    // Direct INSERT is deprecated - use /api/admin/upload/analyze instead
+    return NextResponse.json(
+      {
+        error: "이 API는 더 이상 사용되지 않습니다. /api/admin/upload/analyze를 사용하세요.",
+        deprecated: true,
+      },
+      { status: 410 }
+    );
   } catch (error) {
     console.error("POST /api/admin/upload error:", error);
     return NextResponse.json(

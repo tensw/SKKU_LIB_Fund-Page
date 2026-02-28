@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-02-28T18:20:32.954Z",
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "results": [
+    {
+      "id": "TC-01",
+      "name": "analyze API 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "TC-01",
+      "name": "batchId 존재",
+      "pass": true,
+      "detail": "batchId=c743c3f1..."
+    },
+    {
+      "id": "TC-01",
+      "name": "summary 확인",
+      "pass": true,
+      "detail": "total=3, new=3, dup=0, conflict=0"
+    },
+    {
+      "id": "TC-01",
+      "name": "시드 데이터 감지",
+      "pass": true,
+      "detail": "hasSeedData=true, seedCount=30"
+    },
+    {
+      "id": "TC-01",
+      "name": "confirm API 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "TC-01",
+      "name": "confirm 결과",
+      "pass": true,
+      "detail": "added=3, updated=0, skipped=0"
+    },
+    {
+      "id": "TC-02",
+      "name": "analyze API 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "TC-02",
+      "name": "중복 2건 감지",
+      "pass": true,
+      "detail": "duplicate=2"
+    },
+    {
+      "id": "TC-02",
+      "name": "신규 1건 감지",
+      "pass": true,
+      "detail": "new=1"
+    },
+    {
+      "id": "TC-02",
+      "name": "confirm 결과",
+      "pass": true,
+      "detail": "added=1, skipped=2"
+    },
+    {
+      "id": "TC-03",
+      "name": "analyze API 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "TC-03",
+      "name": "충돌 1건 감지",
+      "pass": true,
+      "detail": "conflict=1"
+    },
+    {
+      "id": "TC-03",
+      "name": "신규 1건 감지",
+      "pass": true,
+      "detail": "new=1"
+    },
+    {
+      "id": "TC-03",
+      "name": "conflictInfo 존재",
+      "pass": true,
+      "detail": "existingAmount=100000"
+    },
+    {
+      "id": "TC-03",
+      "name": "confirm overwrite",
+      "pass": true,
+      "detail": "updated=1, added=1"
+    },
+    {
+      "id": "TC-04",
+      "name": "analyze 시드 감지",
+      "pass": true,
+      "detail": "seedCount=30"
+    },
+    {
+      "id": "TC-04",
+      "name": "시드 삭제 실행",
+      "pass": true,
+      "detail": "seedDeleted=30"
+    },
+    {
+      "id": "TC-04",
+      "name": "신규 반영",
+      "pass": true,
+      "detail": "added=1"
+    },
+    {
+      "id": "TC-05",
+      "name": "analyze 성공",
+      "pass": true,
+      "detail": "batchId=ff3acbae..."
+    },
+    {
+      "id": "TC-05",
+      "name": "cancel API 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "TC-05",
+      "name": "staging 삭제",
+      "pass": true,
+      "detail": "deletedCount=1"
+    },
+    {
+      "id": "TC-05",
+      "name": "취소 후 confirm 불가",
+      "pass": true,
+      "detail": "status=404"
+    },
+    {
+      "id": "TC-06",
+      "name": "410 Gone 반환",
+      "pass": true,
+      "detail": "status=410"
+    },
+    {
+      "id": "TC-06",
+      "name": "deprecated 플래그",
+      "pass": true,
+      "detail": "deprecated=true"
+    }
+  ]
+}
